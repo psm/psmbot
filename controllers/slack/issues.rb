@@ -9,7 +9,8 @@ namespace '/slack' do
   get '/issues/?:repo?' do |repo|
     opts = {filter: 'all', state: 'open'}
 
-    if repo
+    repo = repo || params['text']
+    if repo && repo != ''
       issues = Octokit.issues "psm/#{repo}", opts
     else
       issues = Octokit.org_issues 'psm', opts
