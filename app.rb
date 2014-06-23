@@ -15,6 +15,7 @@ Octokit.configure do |c|
 end
 
 error do
+  status 500
   puts 'error'
 end
 
