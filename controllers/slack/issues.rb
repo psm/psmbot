@@ -20,7 +20,7 @@ namespace '/slack' do
     str = ''
 
     issues.each do |i|
-      unless repo
+      unless repo != ''
         str += i.repository.full_name
       end
       str += "\##{i.number}: <#{i.html_url}|#{i.title}>\n"
