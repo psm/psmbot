@@ -3,7 +3,7 @@
 namespace '/slack' do
 
   before do
-    halt(401, 'Invalid token') unless params['token'] = ENV['SLACK_TOKEN']
+    halt(400, 'Invalid token') unless ENV['SLACK_ISSUES_TOKEN'] && params['token'] == ENV['SLACK_ISSUES_TOKEN']
   end
 
   get '/issues/?:repo?' do |repo|
