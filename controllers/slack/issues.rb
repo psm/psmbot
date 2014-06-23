@@ -22,7 +22,7 @@ namespace '/slack' do
       unless repo
         str += i.repository.full_name
       end
-      str += "\##{i.number}: <#{i.title}|#{i.html_url}>\n"
+      str += "\##{i.number}: <#{i.html_url}|#{i.title}>\n"
     end
 
     return str
