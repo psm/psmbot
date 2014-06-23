@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 Octokit.configure do |c|
-  c.access_token = env['GITHUB_TOKEN']
+  c.access_token = ENV['GITHUB_TOKEN']
 end
 
 Dir['controllers/**/*.rb'].each do |f|
