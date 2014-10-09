@@ -28,7 +28,6 @@ namespace '/slack' do
     str += " del repo '#{repo}'" if repo && repo != ''
     str += "\n\n"
 
-
     issues.each do |i|
       unless repo != ''
         str += i.repository.full_name
