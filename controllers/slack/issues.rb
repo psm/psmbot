@@ -9,15 +9,25 @@ namespace '/slack' do
   get '/issues/?:repo?' do |repo|
     opts = {filter: 'all', state: 'open'}
 
-    repo = repo || params['text'] || params['channel_name']
+    if !(%w{directmessage general random}.include?(params['channel_name']))
+      repo = params['channel_name']
+      repo = 'recursoshumanos' if repo == 'rhtv'
+    elsif params['text'] != ''
+      repo = params['text']
+    end
+
+    repo = nil if repo == 'all'
+
     if repo && repo != ''
-      repo = 'recursoshumanos' if repo = 'rhtv'
       issues = Octokit.issues "psm/#{repo}", opts
     else
       issues = Octokit.org_issues 'psm', opts
     end
 
-    str = ''
+    str = "Estos son todos los issues"
+    str += " del repo '#{repo}'" if repo && repo != ''
+    str += "\n\n"
+
 
     issues.each do |i|
       unless repo != ''
