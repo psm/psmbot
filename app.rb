@@ -19,6 +19,9 @@ error do
   puts 'error'
 end
 
+require 'net/http'
+require 'json'
+
 Dir['controllers/**/*.rb'].each do |f|
   require "./#{f}"
 end
