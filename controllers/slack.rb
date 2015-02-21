@@ -24,7 +24,9 @@ namespace '/slack' do
       issues = Octokit.org_issues 'psm', opts
     end
 
-    str = ""
+    str = "Estos son todos los issues"
+    str += " del repo '#{repo}'" if repo && repo != ''
+    str += "\n\n"
 
     issues.each do |i|
       unless repo != ''
