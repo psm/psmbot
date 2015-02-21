@@ -73,8 +73,6 @@ namespace '/slack' do
     }
 
     uri = URI::parse('https://hooks.slack.com')
-    http = Net::HTTP.Post.new(uri.host, uri.port)
-    http['Content-type'] = 'application/json'
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     req = Net::HTTP::Post.new endpoint, {'Content-type' => 'application/json'}
