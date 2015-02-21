@@ -50,10 +50,13 @@ namespace '/slack' do
         {title: 'restarted', value: params[:apps], short: true}
       ]
       items.push({title: 'compiled', value: 'yup', short: true}) if params[:compiled] == true
+
+      plain_text = "#{title} **#{params[:sha]}**"
     else
       title = 'Error en deployment'
       color = 'danger'
       text = params[:error]
+      plain_text = "#{title}: #{text}"
     end
 
     data = {
