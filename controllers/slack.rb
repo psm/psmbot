@@ -49,7 +49,7 @@ namespace '/slack' do
         {title: 'sha', value: params[:sha], short: true},
         {title: 'restarted', value: params[:apps], short: true}
       ]
-      items.push({title: 'compiled', value: 'yup', short: true}) if params[:compiled] == true
+      items.push({title: 'compiled', value: 'yup', short: true}) if params[:compiled] == 'true'
 
       plain_text = "#{title} **#{params[:sha]}**"
     else
@@ -64,7 +64,7 @@ namespace '/slack' do
       color: color,
       title: title
     }
-    data[:items] = items if items
+    data[:fields] = items if items
     data[:text] = text if text
 
     msg = {
