@@ -16,8 +16,16 @@ namespace '/soporte' do
     fields << {title: 'backtrace', value: payload[:backtrace].shift(10).join("\n"), short: false} if payload[:backtrace]
     fields += payload[:fields] if payload[:fields]
 
-    color = 'warning'
-    color = 'danger' if payload[:level] == 'error'
+    emoji = 'information_source'
+    color = '#CCCCCC'
+    case payload[:level]
+      when 'warning'
+        color = 'warning'
+        emoji = color
+      when 'error'
+        color = 'danger'
+        emoji = 'sos'
+    end
 
     attachment = {
       fallback: payload[:message],
@@ -30,6 +38,8 @@ namespace '/soporte' do
 
     notification = {
       channel: '#debug',
+      username: 'debugger',
+      icon_emoji: ":#{emoji}:",
       attachments: [attachment]
     }
 
