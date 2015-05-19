@@ -4,3 +4,4 @@ env
 .bundle
 vendor
 clientes.yml
+tmp
